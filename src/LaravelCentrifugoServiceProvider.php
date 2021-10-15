@@ -6,13 +6,15 @@ namespace Meetjet\LaravelCentrifugo;
 
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Broadcasting\BroadcastManager;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Meetjet\LaravelCentrifugo\Commands\Setup;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelCentrifugoServiceProvider extends PackageServiceProvider
 {
     /**
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws BindingResolutionException
      */
     public function bootingPackage()
     {
@@ -43,6 +45,7 @@ class LaravelCentrifugoServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-centrifugo')
-            ->hasConfigFile();
+            ->hasConfigFile('centrifugo')
+            ->hasCommand(Setup::class);
     }
 }

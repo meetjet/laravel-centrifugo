@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Meetjet\LaravelCentrifugo;
 
 use Illuminate\Support\Facades\Facade;
@@ -9,7 +11,7 @@ use Illuminate\Support\Facades\Facade;
  */
 class LaravelCentrifugoFacade extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'centrifugo';
     }

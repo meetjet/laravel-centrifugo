@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Meetjet\LaravelCentrifugo;
 
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use Meetjet\LaravelCentrifugo\Contracts\LaravelCentrifugoInterface;
 
 class LaravelCentrifugo implements LaravelCentrifugoInterface
@@ -12,7 +14,7 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
     public const API_PATH = '/api';
 
     /**
-     * @var \GuzzleHttp\Client
+     * @var HttpClient
      */
     protected $httpClient;
 
@@ -25,7 +27,7 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
      * Create a new Centrifugo instance.
      *
      * @param array $config
-     * @param \GuzzleHttp\Client $httpClient
+     * @param HttpClient $httpClient
      */
     public function __construct(array $config, HttpClient $httpClient)
     {
@@ -39,7 +41,7 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
      * @param array $config
      * @return array
      */
-    protected function initConfiguration(array $config)
+    protected function initConfiguration(array $config): array
     {
         $defaults = [
             'url' => 'http://localhost:8000',
@@ -216,7 +218,7 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
      * @param array $info
      * @return string
      */
-    public function generatePrivateChannelToken(string $client, string $channel, int $exp = 0, array $info = [])
+    public function generatePrivateChannelToken(string $client, string $channel, int $exp = 0, array $info = []): string
     {
         $header = ['typ' => 'JWT', 'alg' => 'HS256'];
         $payload = ['channel' => $channel, 'client' => $client];
@@ -241,7 +243,7 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
      *
      * @return string
      */
-    protected function getSecret()
+    protected function getSecret(): string
     {
         return $this->config['secret'];
     }
@@ -252,8 +254,9 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
      * @param string $method
      * @param array $params
      * @return mixed
+     * @throws GuzzleException
      */
-    protected function send($method, array $params = [])
+    protected function send(string $method, array $params = [])
     {
         $json = json_encode(['method' => $method, 'params' => $params]);
 
@@ -298,14 +301,13 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
      *
      * @return string
      */
-    protected function prepareUrl()
+    protected function prepareUrl(): string
     {
         $address = rtrim($this->config['url'], '/');
 
         if (substr_compare($address, static::API_PATH, -strlen(static::API_PATH)) !== 0) {
             $address .= static::API_PATH;
         }
-        //$address .= '/';
 
         return $address;
     }
@@ -315,19 +317,19 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
      * @param string $input
      * @return string
      */
-    private function urlsafeB64Encode($input)
+    private function urlsafeB64Encode(string $input): string
     {
         return str_replace('=', '', strtr(base64_encode($input), '+/', '-_'));
     }
 
     /**
      * Sign message with secret key.
-     * @param string $msg
+     * @param string $message
      * @param string $key
      * @return string
      */
-    private function sign($msg, $key)
+    private function sign(string $message, string $key): string
     {
-        return hash_hmac('sha256', $msg, $key, true);
+        return hash_hmac('sha256', $message, $key, true);
     }
 }
