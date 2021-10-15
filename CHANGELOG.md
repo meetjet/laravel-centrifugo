@@ -1,7 +1,5 @@
 # Changelog
 
-All notable changes to `laravel-centrifugo` will be documented in this file.
-
-## 1.0.0 - 202X-XX-XX
+## 1.0.0 - 2021-10-15
 
 - initial release
