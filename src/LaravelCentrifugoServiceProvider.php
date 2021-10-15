@@ -2,9 +2,9 @@
 
 namespace Meetjet\LaravelCentrifugo;
 
+use Meetjet\LaravelCentrifugo\Commands\LaravelCentrifugoCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Meetjet\LaravelCentrifugo\Commands\LaravelCentrifugoCommand;
 
 class LaravelCentrifugoServiceProvider extends PackageServiceProvider
 {

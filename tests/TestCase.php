@@ -3,8 +3,8 @@
 namespace Meetjet\LaravelCentrifugo\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Meetjet\LaravelCentrifugo\LaravelCentrifugoServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
