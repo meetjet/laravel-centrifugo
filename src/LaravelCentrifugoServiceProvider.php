@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Meetjet\LaravelCentrifugo;
 
+use GuzzleHttp\Client as HttpClient;
 use Illuminate\Broadcasting\BroadcastManager;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use GuzzleHttp\Client as HttpClient;
 
 class LaravelCentrifugoServiceProvider extends PackageServiceProvider
 {

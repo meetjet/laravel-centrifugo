@@ -9,7 +9,7 @@ use Meetjet\LaravelCentrifugo\Contracts\LaravelCentrifugoInterface;
 
 class LaravelCentrifugo implements LaravelCentrifugoInterface
 {
-    const API_PATH = '/api';
+    public const API_PATH = '/api';
 
     /**
      * @var \GuzzleHttp\Client
@@ -42,11 +42,11 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
     protected function initConfiguration(array $config)
     {
         $defaults = [
-            'url'     => 'http://localhost:8000',
-            'secret'  => null,
-            'apikey'  => null,
+            'url' => 'http://localhost:8000',
+            'secret' => null,
+            'apikey' => null,
             'ssl_key' => null,
-            'verify'  => true,
+            'verify' => true,
         ];
 
         foreach ($config as $key => $value) {
@@ -69,7 +69,7 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
     {
         return $this->send('publish', [
             'channel' => $channel,
-            'data'    => $data,
+            'data' => $data,
         ]);
     }
 
@@ -144,7 +144,7 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
     {
         return $this->send('unsubscribe', [
             'channel' => $channel,
-            'user'    => $user,
+            'user' => $user,
         ]);
     }
 
@@ -258,7 +258,7 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
         $json = json_encode(['method' => $method, 'params' => $params]);
 
         $headers = [
-            'Content-type'  => 'application/json',
+            'Content-type' => 'application/json',
             'Authorization' => 'apikey '.$this->config['apikey'],
         ];
 
@@ -266,8 +266,8 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
             $url = parse_url($this->prepareUrl());
 
             $config = collect([
-                'headers'     => $headers,
-                'body'        => $json,
+                'headers' => $headers,
+                'body' => $json,
                 'http_errors' => true,
             ]);
 
@@ -285,8 +285,8 @@ class LaravelCentrifugo implements LaravelCentrifugoInterface
         } catch (ClientException $e) {
             $result = [
                 'method' => $method,
-                'error'  => $e->getMessage(),
-                'body'   => $params,
+                'error' => $e->getMessage(),
+                'body' => $params,
             ];
         }
 

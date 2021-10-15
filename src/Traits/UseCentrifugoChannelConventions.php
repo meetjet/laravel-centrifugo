@@ -32,6 +32,7 @@ trait UseCentrifugoChannelConventions
                     return Str::replaceFirst($prefix, '$', $channel);
                 }
             }
+
             return $channel;
         }, $channels);
     }
