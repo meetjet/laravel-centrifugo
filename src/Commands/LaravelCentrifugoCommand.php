@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Meetjet\LaravelCentrifugo\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelCentrifugoCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-centrifugo';
 
     public $description = 'My command';
 

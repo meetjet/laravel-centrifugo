@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "meetjet/laravel-centrifugo",
+    "description": "This is my package laravel-centrifugo",
     "keywords": [
-        ":vendor_name",
+        "meetjet",
         "laravel",
-        ":package_slug"
+        "laravel-centrifugo"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/meetjet/laravel-centrifugo",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Zorca Orcinus",
+            "email": "vs@zorca.org",
             "role": "Developer"
         }
     ],
@@ -30,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Meetjet\\LaravelCentrifugo\\": "src",
+            "Meetjet\\LaravelCentrifugo\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Meetjet\\LaravelCentrifugo\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Meetjet\\LaravelCentrifugo\\LaravelCentrifugoServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
+                "LaravelCentrifugo": "Meetjet\\LaravelCentrifugo\\LaravelCentrifugoFacade"
             }
         }
     },
