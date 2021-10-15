@@ -41,6 +41,7 @@ class Setup extends Command
     public function handle(): int
     {
         File::copy(__DIR__ . "/../../stubs/centrifugo.json", base_path('centrifugo.json'));
+
         return Command::SUCCESS;
     }
 }
