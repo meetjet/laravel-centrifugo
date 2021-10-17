@@ -7,19 +7,19 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Meetjet\LaravelCentrifugo\Traits\UseCentrifugoChannelConventions;
 
 it('is private channel', function () {
-    $broadcaster = new FakeBroadcasterUsingPusherChannelsNames;
+    $broadcaster = new FakeBroadcasterUsingPusherChannelsNames();
     $channelName = 'private-channel';
     $this->assertTrue($broadcaster->isPrivateChannel($channelName));
 });
 
 it('is not private channel', function () {
-    $broadcaster = new FakeBroadcasterUsingPusherChannelsNames;
+    $broadcaster = new FakeBroadcasterUsingPusherChannelsNames();
     $channelName = 'public-channel';
     $this->assertFalse($broadcaster->isPrivateChannel($channelName));
 });
 
 it('is normalized channels names correct', function () {
-    $broadcaster = new FakeBroadcasterUsingPusherChannelsNames;
+    $broadcaster = new FakeBroadcasterUsingPusherChannelsNames();
     $channelsList = [
         new Channel('channel'),
         new PrivateChannel('channel'),
