@@ -10,7 +10,7 @@
 - Contains instructions and configuration file for setting up with Laravel Sail
 
 ## Requirements
-- PHP >= 7.3
+- PHP >= 7.4
 - Laravel 7.30.4 - 8
 - Guzzle 6 - 7
 - Centrifugo Server 3.0.3 or newer (see [here](https://github.com/centrifugal/centrifugo))
